@@ -1,0 +1,1 @@
+// Globe fragment shader placeholder.

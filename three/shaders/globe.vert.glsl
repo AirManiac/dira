@@ -1,0 +1,1 @@
+// Globe vertex shader placeholder.

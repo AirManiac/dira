@@ -1,0 +1,49 @@
+{
+  "name": "dira",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+
+    "generate:data": "tsx scripts/generate-100k.ts",
+
+    "benchmark:redirect": "tsx scripts/benchmark-redirect.ts",
+    "benchmark:grid": "tsx scripts/benchmark-grid.ts",
+    "benchmark:globe": "tsx scripts/benchmark-globe.ts",
+
+    "remotion:studio": "remotion studio remotion/index.ts",
+    "remotion:render": "remotion render remotion/index.ts",
+
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.3.0",
+    "@tanstack/react-virtual": "^3.13.12",
+    "@upstash/redis": "^1.35.3",
+    "framer-motion": "^12.23.24",
+    "next": "^16.3.5",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "^4.0.0",
+    "three": "^0.180.0",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/three": "^0.180.0",
+    "eslint": "^9.38.0",
+    "eslint-config-next": "^16.3.5",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,1 @@
+// Arc vertex shader placeholder.

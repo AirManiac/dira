@@ -1,0 +1,1 @@
+// Arc fragment shader placeholder.
