@@ -1,26 +1,259 @@
 @import "tailwindcss";
 
+@theme {
+  /*
+   * Typography
+   *
+   * The display face gives the project an editorial feel.
+   * The sans face keeps technical content highly readable.
+   */
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  /*
+   * Core palette
+   *
+   * Keep the interface intentionally restrained.
+   */
+  --color-ink: #111111;
+  --color-ink-muted: #626262;
+  --color-ink-subtle: #8a8a8a;
+
+  --color-paper: #f6f6f3;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eeeeeb;
+
+  --color-line: #deded9;
+  --color-line-strong: #c9c9c3;
+
+  /*
+   * One controlled accent.
+   *
+   * Used for performance signals, active states,
+   * links and important interactions.
+   */
+  --color-accent: #315c4c;
+  --color-accent-light: #e2ebe6;
+  --color-accent-strong: #24483b;
+
+  /*
+   * Semantic status colors.
+   */
+  --color-success: #315c4c;
+  --color-warning: #a06b24;
+  --color-error: #a6423b;
+
+  /*
+   * Layout
+   */
+  --container-content: 1200px;
+  --container-reading: 720px;
+
+  /*
+   * Radius
+   *
+   * Keep these deliberately restrained.
+   */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /*
+   * Shadows
+   *
+   * Mostly reserved for floating interactive elements.
+   */
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-card: 0 8px 30px rgb(0 0 0 / 0.06);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+}
+
+pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/*
+ * Subtle scrollbar.
+ *
+ * The interface should feel considered without
+ * making the scrollbar visually dominant.
+ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+  background-color: var(--color-line-strong);
+}
+
+/*
+ * Shared layout primitives.
+ *
+ * These are intentionally small. We don't want to
+ * create an entire component framework just for this POC.
+ */
+.container-shell {
+  width: min(
+    calc(100% - 40px),
+    var(--container-content)
+  );
+  margin-inline: auto;
+}
+
+.reading-width {
+  width: min(
+    100%,
+    var(--container-reading)
+  );
+}
+
+/*
+ * Editorial typography.
+ */
+.display-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/*
+ * Technical data styling.
+ */
+.metric-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+
+.metric-label {
+  color: var(--color-ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/*
+ * Hairline divider.
+ */
+.hairline {
+  height: 1px;
+  width: 100%;
+  background: var(--color-line);
+}
+
+/*
+ * Respect users who prefer reduced motion.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/*
+ * Mobile adjustments.
+ */
+@media (max-width: 640px) {
+  .container-shell {
+    width: min(
+      calc(100% - 28px),
+      var(--container-content)
+    );
+  }
 }

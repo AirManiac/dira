@@ -9,16 +9,12 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-
     "generate:data": "tsx scripts/generate-100k.ts",
-
     "benchmark:redirect": "tsx scripts/benchmark-redirect.ts",
     "benchmark:grid": "tsx scripts/benchmark-grid.ts",
     "benchmark:globe": "tsx scripts/benchmark-globe.ts",
-
     "remotion:studio": "remotion studio remotion/index.ts",
     "remotion:render": "remotion render remotion/index.ts",
-
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -36,13 +32,16 @@
     "zod": "^4.1.11"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^24.7.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@types/three": "^0.180.0",
     "eslint": "^9.38.0",
     "eslint-config-next": "^16.3.5",
+    "postcss": "^8.5.28",
     "prettier": "^3.6.2",
+    "tailwindcss": "^4.3.3",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }
