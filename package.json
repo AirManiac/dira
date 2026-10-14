@@ -24,9 +24,11 @@
     "@tanstack/react-virtual": "^3.13.12",
     "@upstash/redis": "^1.35.3",
     "framer-motion": "^12.23.24",
+    "lucide-react": "^1.57.0",
     "next": "^16.3.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-globe.gl": "^2.38.0",
     "remotion": "^4.0.0",
     "three": "^0.180.0",
     "zod": "^4.1.11"
